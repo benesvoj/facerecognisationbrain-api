@@ -20,7 +20,7 @@ const db = require('knex')({
 });
 
 app.get('/', (req, res) => {
-    res.send(database.users);
+    res.send('it is working');
 });
 
 app.post('/signin', signin.handleSignIn(db, bcrypt, saltRounds));
