@@ -14,7 +14,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const db = require('knex')({
-    client: 'pg', connection: {
+    client: 'pg',
+    connection: {
         connectionString: process.env.DATABASE_URL,
         ssl: {
             rejectUnauthorized: false
@@ -29,7 +30,7 @@ app.get('/', (req, res) => {
 app.post('/signin', signin.handleSignIn(db, bcrypt, saltRounds));
 
 app.post('/register', (req, res) => {
-    register.handleRegister(req, res, db, bcrypt, saltRounds)
+    register.handleRegister(req, res, db, bcrypt)
 });
 
 app.get('/profile/:id', (req, res) => {
