@@ -13,8 +13,6 @@ const saltRounds = 10;
 app.use(bodyParser.json());
 app.use(cors());
 
-const PORT = process.env.PORT;
-
 const db = require('knex')({
     client: 'pg', connection: {
         host: '127.0.0.1', port: 5432, user: '', password: '', database: 'smart-brain'
@@ -41,6 +39,6 @@ app.put('/image', (req, res) => {
 
 app.post('/imageurl', (req, res) => {image.handleApiCall(req, res)});
 
-app.listen(PORT, () => {
-    console.log(`App is running on port ${PORT}`)
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`App is running on port ${process.env.PORT}`)
 });
