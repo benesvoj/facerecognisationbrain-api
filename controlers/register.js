@@ -23,6 +23,7 @@ const handleRegister = (req, res, db, bcrypt, saltRounds) => {
                             name: name,
                             joined: new Date()
                         })
+                        .catch(console.log(loginEmail[0].email))
                         .then(user => {
                             res.json(user[0]);
                         })
@@ -31,7 +32,6 @@ const handleRegister = (req, res, db, bcrypt, saltRounds) => {
                 .catch(trx.rollback)
         })
         .catch(err => res.status(400).json('unable to register: ' + err))
-    console.log(loginEmail[0].email);
 }
 
 module.exports = {
