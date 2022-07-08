@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
-const {port, database} = require('./config')
+const {port, database} = require('./config');
 
 // controllers
 const register = require("./controlers/register");
@@ -44,7 +44,9 @@ app.put('/image', (req, res) => {
     image.handleImageGet(req, res, db)
 });
 
-app.post('/imageurl', (req, res) => {image.handleApiCall(req, res)});
+app.post('/imageurl', (req, res) => {
+    image.handleApiCall(req, res)
+});
 
 app.listen(port, () => {
     console.log(`App is running on port ${port}`)
