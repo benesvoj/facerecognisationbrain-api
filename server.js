@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
-const dotenv = require('dotenv');
+const {port, database} = require('./config')
 
 // controllers
 const register = require("./controlers/register");
@@ -13,16 +13,13 @@ const image = require('./controlers/image');
 const app = express();
 const saltRounds = 10;
 
-dotenv.config();
-const port = process.env.PORT;
-
 app.use(bodyParser.json());
 app.use(cors());
 
 const db = require('knex')({
     client: 'pg',
     connection: {
-        connectionString: process.env.DATABASE_URL,
+        connectionString: database,
         ssl: {
             rejectUnauthorized: false
         }
