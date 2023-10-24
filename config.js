@@ -7,5 +7,5 @@ module.exports = {
     masterKey: process.env.API_KEY,
     port: process.env.PORT,
     database: process.env.DATABASE_URL,
-    clarifaiApiKey: 'c4fe8b7d34bc4be6afb5d20ba9bde35f'
+    clarifaiApiKey: process.env.CLARIFAI_API_KEY
 };
